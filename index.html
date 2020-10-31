@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+
+	<!-----------Bootstrap ------------------------->
+	 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="assets/css/Footer-with-button-logo.css">
+	 <!----------------------CSS----------------------->
+	 <link rel="stylesheet" type="text/css" href="assets/css/print.css" media="print"/> 
+
+	 <!------------JS ---------------------->
+	 <SCRIPT LANGUAGE="JavaScript1.2">
+					function alerta(){
+					alert('A página não pode ser salva.');
+					return false;
+					}
+					function verificaBotao(oEvent){
+					var oEvent = oEvent ? oEvent : window.event;
+					var tecla = (oEvent.keyCode) ? oEvent.keyCode : oEvent.which;
+					if(tecla == 17 || tecla == 44|| tecla == 106){
+					alerta();
+					}
+					}
+					</SCRIPT>
+					<SCRIPT LANGUAGE="JavaScript1.2">
+					document.onkeypress = verificaBotao;
+					document.onkeydown = verificaBotao;
+					document.oncontextmenu = alerta;
+	</script>
+<!--------------------Titulo ------------------------------->
+	<title>Travando impressões</title>
+</head>
+
+<!--------------------- navbar inicio ---->
+<body class="bg-secondary">
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.html">DevOsc</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Ação</a>
+          <a class="dropdown-item" href="#">Outra Açao</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Outro link</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="pesquisar">
+      <button class="btn btn-dark my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+  </div>
+</nav>
+</header>
+<!-----------------navbar fim -------------------->
+
+
+
+
+	<!-------------codigo do css para imprimei ---------> 
+	<div id="imprime" style="text-align: center;">
+			<p>
+				<small>Você não tem permição de imprimir esta página.</small>
+			<br>
+			</p>
+	</div>
+
+<!----------códogo do CSS para não imprimir  ----------------------->
+	<div  id="naoimprime" class="container  bg-dark"   >	
+	<div class="row">
+	<div class="col text-secondary">					
+	<h2>Desenvolvimento - Javascript</h2>
+<h4>Como bloquear o botão CTRL e impedir impressão de página com Javascript</h4>	
+
+
+<p>Olá leitor(a), hoje eu gostaria de mostrar aqui como evitar que o usuário imprima a sua página utilizando o browser e como evitar que o mesmo usuário clique no botão Ctrl para salvar o que tem na sua página.</p>
+
+<p>O grande desafio aqui não é bloquear tudo, é bloquear apenas o necessário. Geralmente o bloqueio é feito em partes do sistema, aquela parte que geralmente alguns perfis tem acesso com usuário e senha.</p>
+
+<p>Aqui eu mostro como bloquear a impressão de tudo, mesmo utilizando o menu Arquivo>> Imprimir do browser ou clicando no botão de atalho Ctrl + P. Passando para a parte do botão Ctrl, dependendo do seu sistema é melhor adicionar uma página “full screen” ou “popup”, assim o usuário não tem como clicar Ctrl + N ou qualquer outra tecla para salvar a página. Quando o usuário clica no botão Ctrl, aparece pra ele uma mensagem falando que essa tecla está proibida e nada é feito.</p>
+
+<p>A parte da impressão é feita utilizando CSS, enquanto que a parte do Ctrl é feita com JavaScript na página.</p>
+
+<p>Qual a razão de utilizar essas duas funcionalidades? Bom, a minha razão é porque o cliente solicitou isso no sistema interno dele. Ele quer evitar que os outros usuário possam imprimir a página ou o documento específico. Se você leitor(a) quiser usar só a parte do CSS ou a só a parte do JavaScript, fique a vontade para fazer o que for melhor para você.</p>
+
+<p>Lembro que me baseei pesquisando na Internet e juntando algumas peças necessárias.</p>
+
+<h3>Primeiro passo</h3>
+<p>O primeiro passo é criar um arquivo chamado print.css, simples e fácil. Esse arquivo pode ser criado usando o notepad do Windows sem qualquer dificuldade. Eu resolvi chamar o arquivo de print.css pelo fato de que o arquivo é focado apenas para imprimir.</p>
+
+<p> O code 1.1 mostra o código desenvolvido.</p>
+
+<h5>Listagem 1: <small>Arquivo print.css</small></h5> 
+
+<div>
+	<img src="img/codigoNaoPrintCss.png" alt="codigo do html" >
+	<h6>Figura 1 : <small>Código do CSS</small></h6>
+</div><br>
+
+
+
+<p>Esse arquivo .css possui duas tags importantes, uma chamada “naoimprime” e a outra chamada “imprime”. Essas tags precisam ser chamadas de dentro do arquivo .html, .htm, .aspx, .jsf e tudo mais. Lembro que todo esse código funciona em qualquer linguagem e qualquer browser.</p>
+
+<p>Para chamar essas tags da listagem 1, basta colocar o id = “naoimprime” ou id = “imprime”.</p>
+
+<h4>Segundo passo</h4>
+
+<p>O segundo passo envolve a criação de uma página em html ou qualquer extensão que está programando, chamando o arquivo .css e definindo o que pode e não pode imprimir. A listagem 2 mostra isso.</p>
+
+<h3>Listagem 2: <small>Página HTML</small></h3>
+
+<div>
+	<img src="img/codigoNaoPrint.png" alt="codigo do CSS" >
+	<h6>Figura 2 : <small>Código do HTML</small></h6>
+</div><br>
+
+
+<p>Na quarta linha da listagem 2 chama o arquivo print.css indicando a propriedade media=”print”. Depois da tag “body” existe a tag div com o id=”naoimprime”. Tudo que estiver dentro dessa div não vai imprimir. É dentro dela que você coloca o conteúdo da sua página ou sistema.</p>
+
+<p>Depois que fechar a tag div, se achar necessário você pode colocar outra tag com o id=”imprime”. Tudo que estiver dentro dessa tag poderá ser impressa sem qualquer problema. Mesmo que usuário clique Ctrl + P ou acesse o endereço Arquivo >> Imprimir, tudo que será impresso é a mensagem falando que o documento está bloqueado. É assim que funciona o bloqueio de impressão sem qualquer problema.</p>
+
+<p>A figura 1 mostra o que acontece se o usuário tentar imprimir.</p>
+
+<div>
+	<img src="img/codigoNaoPrintResult.png" alt="mostra o print">
+	<h6>Figura 3 : <small>Tentando imprimir</small><h6>
+</div><br>
+
+<p>Até aqui já funciona igual a foto acima. Bora continuar...</p>
+
+
+<h4>Terceiro passo</h4>
+<p>O terceiro passo envolve colocar o JavaScript dentro da página para bloquear o botão Ctrl. Se o usuário clicar nesse botão, uma mensagem aparece e não deixa que nada aconteça. Em alguns casos, é melhor usar um “popup” para evitar problemas; isso porque o usuário pode usar o menu do browser.</p>
+
+<p>No geral a parte em JavaScript está pronta e você pode colocar no início da página.</p>
+
+<h5>Listagem 3: <small>Código Javascript</small></h5>
+
+<div>
+	<img src="img/codigoNaoPrintJS.png" alt="mostra o print">
+	<h6>Figura 4 : <small>Código JS</small><h6>
+</div><br>
+
+
+<p>Note que a listagem 3 possui duas funções específicas. Essa função é colocada dentro da tag head da página html. A primeira função chama “alert”, onde a mensagem é exibida para o usuário. A segunda função chama “verificaBotao” onde recebe um evento. Esse evento detecta o número da tecla apertada e se for 17, 44 ou 106 então a mensagem aparece na tela.</p>
+
+<p>O grande problema do JavaScript é fazer executar mesmo que não tiver dentro de um tempo “input”. Para resolver esse problema, foi atribuído no documento os eventos “onkeypress”, “onkeydown” e "oncontextmenu”, responsáveis pelo clique em qualquer parte da página. Isso faz com que, mesmo que a página não tenha nenhum campo “input”, se for colocado a tecla a mensagem aparece.</p>
+
+<p>Para finalizar, a listagem 4 mostra toda página.</p>
+
+<h5>Listagem 4: <small>Código completo da página</small></h5>
+
+<div>
+	<img src="img/codigoNaoPrintCompleto.png" alt="mostra o código completo">
+	<h6>Figura 5 : <small>Código Completo</small><h6>
+</div><br>
+
+
+<small>A figura 6 mostra a mensagem na tela do usuário.</small>
+
+<div>
+	<img src="img/codigoNaoPrintFinal.png" alt="mostra um aviso ao usuário">
+	<h6>Figura 6 : <small>Aviso ao usuário ao clicar no CRTL</small><h6>
+</div><br>
+
+<p>Eu fico por aqui, retirado da fonte abaixo. Abraço!</p> 
+
+
+
+
+<p >Fonte: Read more: http://www.linhadecodigo.com.br/artigo/3652/como-bloquear-o-botao-ctrl-e-impedir-impressao-de-pagina-com-javascript.aspx#ixzz6cS0JWGDi</p>
+			
+
+
+				</div>	
+			</div>	
+		</div>
+
+
+
+<!---------------------cabeçalho---------------------------------------------->
+
+				
+		
+		
+		<footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2 class="logo"><a href="#"> LOGO </a></h2>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Inicio</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Sobre-nós</h5>
+                    <ul>
+                        <li><a href="#">Informações da Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Suporte</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Telefones</a></li>
+                        <li><a href="#">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <div class="social-networks">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    </div>
+                    <a href="#">
+                        <button type="button" class="btn btn-secondary">Contato</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2020 Copyright - Programador DevOsc</p>
+        </div>
+    </footer>
+
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	-->
+
+
+
+
+	</body>
+</html>	
